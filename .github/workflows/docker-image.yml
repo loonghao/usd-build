@@ -16,7 +16,7 @@ jobs:
     - name: Build USD
       run: |
         docker build --rm -t usd-build .
-        docker run --rm -it -v "$(pwd):c:/build" usd-build python c:/usd/build_scripts/build_usd.py --openvdb --openimageio --opencolorio --alembic --hdf5 c:/build/usd --build-args boost,"--with-date_time --with-thread --with-system --with-filesystem" 
+        winpty docker run --rm -it -v "$(pwd):c:/build" usd-build python c:/usd/build_scripts/build_usd.py --openvdb --openimageio --opencolorio --alembic --hdf5 c:/build/usd --build-args boost,"--with-date_time --with-thread --with-system --with-filesystem" 
     - name: 'Upload USD'
       uses: 'actions/upload-artifact@v2'
       with:

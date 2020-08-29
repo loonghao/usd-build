@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build USD
-      run: docker run --rm -it -v ${{ github.workspace}}:c:/build longhal/usd-build:base python c:/usd/build_scripts/build_usd.py --openvdb --openimageio --opencolorio --alembic --hdf5 c:/build/usd --build-args boost,"--with-date_time --with-thread --with-system --with-filesystem" 
+      run: winpty docker run --rm -it -v ${{ github.workspace}}:c:/build longhal/usd-build:base python c:/usd/build_scripts/build_usd.py --openvdb --openimageio --opencolorio --alembic --hdf5 c:/build/usd --build-args boost,"--with-date_time --with-thread --with-system --with-filesystem" 
     - name: 'Upload USD'
       uses: 'actions/upload-artifact@v2'
       with:

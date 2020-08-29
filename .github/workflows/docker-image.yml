@@ -14,6 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build USD
-    - run: docker build --rm -t usd-build .
-    - run: docker run --rm -it -v "$(pwd):c:/build" -v "$(echo $env:RMANTREE):c:/prman" usd-build python c:/usd/build_scripts/build_usd.py --openvdb --openimageio --opencolorio --alembic --hdf5 c:/build/usd --build-args boost,"--with-date_time --with-thread --with-system --with-filesystem" 
-    
+      run: |
+        docker build --rm -t usd-build .
+        docker run --rm -it -v "$(pwd):c:/build" -v "$(echo $env:RMANTREE):c:/prman" usd-build python c:/usd/build_scripts/build_usd.py --openvdb --openimageio --opencolorio --alembic --hdf5 c:/build/usd --build-args boost,"--with-date_time --with-thread --with-system --with-filesystem" 
+
